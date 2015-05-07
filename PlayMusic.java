@@ -111,7 +111,7 @@ public class PlayMusic
          Scanner songin = new Scanner(new File(filename));
          String title, songfilename;
          if(!songin.hasNextLine())
-            throw new IOException("Empty file!");
+            throw new IOException(String.format("Empty file, %s!", filename));
          while(songin.hasNextLine())
          {
             title = songin.nextLine();
@@ -128,7 +128,7 @@ public class PlayMusic
          System.out.printf("Fatal error: unable to open songlist file, %s.\n"
                           +"%s\n"
             		        +"\n"
-            			     +"Exiting\n"
+            			     +"Exiting buildSonglist()\n"
             			     +"\n", filename,  ioe.toString());
          throw ioe;
       }
@@ -148,7 +148,7 @@ public class PlayMusic
          Scanner songin = new Scanner(new File(filename));
          String title, songfilename, artfilename, album;
          if(!songin.hasNextLine())
-            throw new IOException("Empty file!");
+            throw new IOException(String.format("Empty file, %s!", filename));
          while(songin.hasNextLine())
          {
             title = songin.nextLine();
@@ -159,7 +159,7 @@ public class PlayMusic
                throw new IOException(String.format("No art filename for file, %s.", title));            
             artfilename  = songin.nextLine();
             if(!songin.hasNextLine())
-               throw new IOException(String.format("No album for, %s.", title));            
+               throw new IOException(String.format("No album for, %s.", title));
             album = songin.nextLine();
             songinfos.add(new SongDetails(title, songfilename, artfilename, album));
          }
@@ -171,7 +171,7 @@ public class PlayMusic
          System.out.printf("Fatal error: unable to open songlist file, %s.\n"
                           +"%s\n"
             		        +"\n"
-            			     +"Exiting\n"
+            			     +"Exiting buildSonglist2()\n"
             			     +"\n", filename,  ioe.toString());
          throw ioe;
       }

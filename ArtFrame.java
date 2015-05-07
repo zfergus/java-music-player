@@ -1,6 +1,6 @@
 /**
   * @author Zachary Ferguson
-  * @version 0.0.1
+  * @version 0.0.1a
   * JFrame child class for displaying song artwork.
   */
 
@@ -15,7 +15,7 @@ import javax.imageio.*;
 public class ArtFrame extends JFrame
 {   
    /** The Art to be displayed in the Frame. */
-   Art image;
+   Art artwork;
    
    /**
      * Constructor for ArtWork using the given imageFile. 
@@ -29,8 +29,8 @@ public class ArtFrame extends JFrame
    {
       this.setTitle(title);
       this.setSize(width, height);
-      this.image = new Art(imageFile);
-      this.add(image);
+      this.artwork = new Art(imageFile);
+      this.add(artwork);
    }
    
    /**
@@ -41,15 +41,15 @@ public class ArtFrame extends JFrame
      */
    public void repaint(String title, File imageFile) throws IOException
    {
-      this.remove(image);
+      this.remove(artwork);
       this.setTitle(title);
-      this.image = new Art(imageFile);
-      this.add(image);
+      this.artwork = new Art(imageFile);
+      this.add(artwork);
    }
    
    public class Art extends JComponent
    {
-      /** The image that is displayed when the Art is painted*/
+      /** The image that is displayed when the Art is painted */
       private Image image;
       
       /**
@@ -71,7 +71,7 @@ public class ArtFrame extends JFrame
          if(image == null) 
             return; 
          g.drawImage(this.image, 0, 0, this);
-	 super.setBackground(Color.BLACK);
+	      super.setBackground(Color.BLACK);
       }
    }
 }

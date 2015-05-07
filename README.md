@@ -3,17 +3,18 @@ the user or different play-list sources (files, strings, shuffled, all songs)
 and displays the corresponding song artwork. You can add more songs and artwork 
 by putting them in the corresponding folders, with the standard file name 
 extensions specified. Then add them to the "songlist" of choice, 
-EX: "default.songlist".
+EX: "default.songlist". 
+This allows for a simple and easy to use command line music player.
 
-Usage:<br />
+Usage:
 	(run.exe/run.bat) - Double click on the program run.exe or run.bat to start
-			a script that compiles and runs the program <br />
+			a script that compiles and runs the program
 	(terminal/cmd) - in the command line use the following commands in quotes to 
-		compile and execute the program: <br />
-			1) "javac *.java" - compiles <br />
-			2) "java PlayMusic" - runs Anime Music Player <br />
+		compile and execute the program:
+			1) "javac *.java" - compiles
+			2) "java PlayMusic" - runs Anime Music Player
 
-Contents:<br />
+Contents:
 	./mus/ - Folder containing the music files that the music player can play.
 	    Standard file extension/format is ".wav". 
 	./art/ - Folder containing the song artwork image files that the music 
@@ -40,16 +41,42 @@ Contents:<br />
 		Also, (file name) does not include the file extension, it is just the 
 		base name, and the first two lines are devoted to the exiting option 
 		where the second line MUST be the word "exit", with out quotes. ALL 
-		lines end with a newline EXCEPT for the last one.			
+		lines end with a newline EXCEPT for the last one.
+	- *.sl2 - Songlist 2.0, a standard songlist file that has been extended to 
+		include separate filename for the music and artwork as well as a album
+		title. This is the new standard songlist that AMP currently uses. The
+		format is as follows:
+			Exiting\n
+			exit\n
+			exit\n
+			exit\n
+			(title of song 1)\n
+			(music file name 1)\n
+			(artwork file name 1)\n
+			(album name 1)\n
+			(title of song 2)\n
+			(music file name 2)\n
+			(artwork file name 2)\n
+			(album name 2)\n
+			.
+			.
+			.
+			(title of song n)\n
+			(music file name n)
+			(artwork file name n)\n
+			(album name n)\n
 	- default.songlist - Songlist file containing every file available. It is 
 		recommended that if any new songs/artwork is added to the mus/art 
-		folders then add them to default.songlist as well. 
+		folders then add them to default.songlist as well.
+	- default.sl2 - Songlist 2.0 file containing every file available. It is 
+		recommended that if any new songs/artwork is added to the mus/art 
+		folders then add them to default.sl2 as well.
 	- *.play - Play-list files that are read by the Anime Music Player to play 
 		from a file. Must be in the format "#(white space)#(white space)#(white 
 		space)#(white space)...0", where # is a number corresponding to the song 
 		selection, and (white space) is either a space, tab, or new line. (NOTE: 
 		ALLWAYS end a .play file with a 0 to exit, unpredictable behaviour 
-		otherwise.) 
+		otherwise.)
 	
 	- PlayMusic.java - Controls the music player getting the users input and 
 		processing them. Determines what music to play and what are work to 
