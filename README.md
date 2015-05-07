@@ -7,11 +7,11 @@ EX: "default.songlist".
 
 Usage:
 	(run.exe/run.bat) - Double click on the program run.exe or run.bat to start
-			a script that compiles and runs the program
+			a script that compiles and runs the program 
 	(terminal/cmd) - in the command line use the following commands in quotes to 
-		compile and execute the program:
-			1) "javac *.java" - compiles
-			2) "java PlayMusic" - runs Anime Music Player
+		compile and execute the program: 
+			1) "javac *.java" - compiles 
+			2) "java PlayMusic" - runs Anime Music Player 
 
 Contents:
 	./mus/ - Folder containing the music files that the music player can play.
