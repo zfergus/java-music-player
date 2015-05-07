@@ -5,15 +5,15 @@ by putting them in the corresponding folders, with the standard file name
 extensions specified. Then add them to the "songlist" of choice, 
 EX: "default.songlist".
 
-Usage:
+Usage:<br />
 	(run.exe/run.bat) - Double click on the program run.exe or run.bat to start
-			a script that compiles and runs the program 
+			a script that compiles and runs the program <br />
 	(terminal/cmd) - in the command line use the following commands in quotes to 
-		compile and execute the program: 
-			1) "javac *.java" - compiles 
-			2) "java PlayMusic" - runs Anime Music Player 
+		compile and execute the program: <br />
+			1) "javac *.java" - compiles <br />
+			2) "java PlayMusic" - runs Anime Music Player <br />
 
-Contents:
+Contents:<br />
 	./mus/ - Folder containing the music files that the music player can play.
 	    Standard file extension/format is ".wav". 
 	./art/ - Folder containing the song artwork image files that the music 
