@@ -26,6 +26,8 @@ mus/*
 songlists/*
 playlists/*
 
+./bin/
+
 *.exe
 !run.exe
 
