@@ -1,1 +1,1 @@
-javadoc -d . -source ..\ ..\*.java -private -author -version
+javadoc -d . -source ..\src ..\src\*.java -private -author -version
