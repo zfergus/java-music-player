@@ -5,7 +5,7 @@ by putting them in the corresponding folders, with the standard file name
 extensions specified. Then add them to the "songlist" of choice, 
 EX: "default.songlist". 
 This allows for a simple and easy to use command line music player.
-
+<pre>
 Usage:
 	(run.exe/run.bat) - Double click on the program run.exe or run.bat to start
 			a script that compiles and runs the program
@@ -107,3 +107,4 @@ Contents:
 		displaying the corresponding artwork.
 		
 	- anime.ico - The icon file for run.exe.
+</pre>
