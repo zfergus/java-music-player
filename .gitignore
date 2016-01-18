@@ -20,13 +20,13 @@ manifest.mf
 #==================
 # Resources
 #==================
-./art/*
-!./art/sample*
+art/*
+!art/sample*
 
-./backup/*
+backup/*
 
-./mus/*
-./mus/sample*
+mus/*
+!mus/sample*
 
 *.exe
 !run.exe
