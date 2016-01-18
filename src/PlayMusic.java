@@ -39,10 +39,22 @@ public class PlayMusic
 		try /* Possible Exceptions from IO */
 		{
 
-			//songinfos = buildSonglist("default.songlist");
-			songinfos = buildSonglist2("default.sl2");
+			//songinfos = buildSonglist("./songlists/default.songlist");
+			System.out.print(
+				"Songlist path [default: ./songlists/default.sl2]: ");
+			String songlistPath = input.next();
+			
+			File tmp = new File(songlistPath);
+			if(tmp.exists())
+			{
+				songinfos = buildSonglist2(songlistPath);
+			}
+			else
+			{
+				songinfos = buildSonglist2("./songlists/default.sl2");
+			}
 
-			//saveSonglist("test.sl2", songinfos);
+			//saveSonglist("./songlists/test.sl2", songinfos);
 
 			playlist = getPlaylist(songinfos.size());  /* Get playlist scanner            */
 			kawaii = new AnimeMusicPlayer();           /* Create AMP from playlist        */

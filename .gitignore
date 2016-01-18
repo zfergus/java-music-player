@@ -21,15 +21,15 @@ manifest.mf
 # Resources
 #==================
 art/*
-!art/sample*
-
 backup/*
-
 mus/*
-!mus/sample*
+songlists/*
+playlists/*
 
 *.exe
 !run.exe
 
 *.xml
 *.zip
+
+!*/sample*
