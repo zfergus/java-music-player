@@ -19,7 +19,7 @@ This allows for a simple and easy to use command line music player.
 Double click on the program run.exe or run.bat to start a script that compiles 
 and runs the program. 
 
-** OR **
+**OR**
 
 In the command line use the following commands to compile and execute the 
 program:
