@@ -17,6 +17,9 @@ public class PlayMusic
 	/** Scanner for getting user input from the cmd line. */
 	private static Scanner input = new Scanner(System.in);
 
+	private static final String DEFAULT_SONGLIST_PATH = 
+		"./songlists/default.sl2";
+	
 	/**
 	* Runs the PlayMusic program, prompting for various inputs, playing music, 
 	* and displaying artwork.
@@ -37,12 +40,8 @@ public class PlayMusic
 
 
 		try /* Possible Exceptions from IO */
-		{
-
-			//songinfos = buildSonglist("./songlists/default.songlist");
-			System.out.print(
-				"Songlist path [default: ./songlists/default.sl2]: ");
-			String songlistPath = input.next();
+		{	
+			String songlistPath = getSonglistPath();
 			
 			File tmp = new File(songlistPath);
 			if(tmp.exists())
@@ -51,7 +50,7 @@ public class PlayMusic
 			}
 			else
 			{
-				songinfos = buildSonglist2("./songlists/default.sl2");
+				songinfos = buildSonglist2(DEFAULT_SONGLIST_PATH);
 			}
 
 			//saveSonglist("./songlists/test.sl2", songinfos);
@@ -111,11 +110,56 @@ public class PlayMusic
 		}
 	}
 
+	private static String getSonglistPath()
+	{
+		int choice;
+		
+		do
+		{
+			System.out.printf("Songlist location:\n" +
+							  "1) Default [%s]\n" + 
+							  "2) Custom\n" + 
+							  "# ", DEFAULT_SONGLIST_PATH);
+			choice = input.nextInt();
+			
+			if(choice < 1 || choice > 2)
+			{
+				System.out.printf(
+					"Invalid choice, %d. Please retry\n\n", choice);
+			}
+		}while(choice < 1 || choice > 2);
+		
+		String path = DEFAULT_SONGLIST_PATH;
+		System.out.println();
+		
+		if(choice == 2)
+		{
+			do
+			{
+				System.out.printf("Songlist path: ");
+				path = input.next();
+				
+				if(!((new File(path)).exists()))
+				{
+					System.out.printf(
+						"Songlist, %s, does not exist. Please retry.\n\n", path
+					);
+				}
+			}while(!((new File(path)).exists()));
+			
+			System.out.println();
+		}
+		
+		return path;
+	}
+	
 	/**
 	* Constructs a list of SongDetails from the File with the given name.
-	* @param filename Name of the songlist file containing the song titles and filenames.
-	* @return Returns a new ArrayList of SongDetails aquired from the File.
-	* @throws IOException Throws an exception if something goes wrong while reading the songlist file.
+	* @param filename Name of the songlist file containing the song titles and 
+	* filenames.
+	* @return Returns a new ArrayList of SongDetails acquired from the File.
+	* @throws IOException Throws an exception if something goes wrong while 
+	* reading the songlist file.
 	*/
 	private static ArrayList<SongDetails> buildSonglist(String filename) 
 		throws IOException
@@ -235,7 +279,7 @@ public class PlayMusic
 				"3) File: Read a pre-built playlist from a file\n" + 
 				"4) Shuffle: Play a random number of songs in random order\n" +
 				"5) Custom: Select songs to play from the menu\n" +
-				"#");
+				"# ");
 			
 			try
 			{
@@ -305,7 +349,7 @@ public class PlayMusic
 			System.out.print("Would you like to save this playlist to a file?\n"
 				+"1)Yes\n"
 				+"0)No\n"
-				+"#");
+				+"# ");
 
 			choice = input.nextInt();
 			
