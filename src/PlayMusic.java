@@ -495,7 +495,7 @@ public class PlayMusic
 			
 			if(choice > 0 && choice < songinfos.size())
 			{
-				System.out.printf("\n\nPlaying %s.\n", 
+				System.out.printf("\nPlaying %s.\n", 
 					songinfos.get(choice).getTitle());
 				return songinfos.get(choice);
 			}
