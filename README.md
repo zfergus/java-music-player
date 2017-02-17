@@ -10,13 +10,7 @@ shuffled, all songs) and displays the corresponding song artwork. Moreover,
 users can add more songs and artwork by putting them in the corresponding
 folders with the standard file name extensions specified, and then adding
 them to their "songlist" of choice. This allows for a simple and easy to use
-command line music player.<br>
-The Anime Music Player is a personal project of mine that I have been
-developing in my spare time, learning how to play sounds as well as display
-graphical components in Java. It is still a work in progress and has a long
-way to go before, if ever, being finalized. It is not something I currently
-plan to distribute commercially, as it is mostly a learning project for me,
-but I might distribute it as a free-ware or a learning example.
+command line music player.
 
 <hr>
 
