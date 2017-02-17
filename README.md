@@ -1,14 +1,22 @@
 # Anime Music Player
 
+<img src = "./screen.png" title = "Anime Music Players" width = "100%">
+
 **Java command line music player for playing your favorite anime theme songs.**
 
-This is a Java program that plays the anime theme or related songs selected by 
-the user or different play-list sources (files, strings, shuffled, all songs) 
-and displays the corresponding song artwork. You can add more songs and artwork 
-by putting them in the corresponding folders, with the standard file name 
-extensions specified. Then add them to the "songlist" of choice, 
-EX: "default.songlist". 
-This allows for a simple and easy to use command line music player.
+The Anime Music Player is a Java program that plays anime themes or related
+songs selected by the user or different playlist sources (files, strings,
+shuffled, all songs) and displays the corresponding song artwork. Moreover,
+users can add more songs and artwork by putting them in the corresponding
+folders with the standard file name extensions specified, and then adding
+them to their "songlist" of choice. This allows for a simple and easy to use
+command line music player.<br>
+The Anime Music Player is a personal project of mine that I have been
+developing in my spare time, learning how to play sounds as well as display
+graphical components in Java. It is still a work in progress and has a long
+way to go before, if ever, being finalized. It is not something I currently
+plan to distribute commercially, as it is mostly a learning project for me,
+but I might distribute it as a free-ware or a learning example.
 
 <hr>
 
@@ -147,5 +155,3 @@ name.
 displaying the corresponding artwork.
 		
 * `anime.ico` - The icon file for run.exe.
-<br><hr><br>
-<img src = "./screen.png" title = "Anime Music Players" width = "100%">
