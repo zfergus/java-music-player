@@ -4,7 +4,7 @@
 
 **Java command line music player for playing your favorite anime theme songs.**
 
-The Anime Music Player is a Java program that plays anime themes or related
+Anime Music Player is a Java program that plays anime themes or related
 songs selected by the user or different playlist sources (files, strings,
 shuffled, all songs) and displays the corresponding song artwork. Moreover,
 users can add more songs and artwork by putting them in the corresponding
