@@ -17,15 +17,15 @@ public class ArtFrame extends JFrame
 	Art artwork;
 
 	/**
-	  * Constructor for ArtWork using the given imageFile. 
+	  * Constructor for ArtWork using the given imageFile.
 	  * @param title Title of the artwork to be displayed.
 	  * @param width Width of the ArtFrame in pixels.
 	  * @param height Height of the ArtFrame in pixels.
 	  * @param imageFile File contaning the image to be displayed in the frame.
-	  * @throws IOException Throws an IOException if something goes wrong while 
+	  * @throws IOException Throws an IOException if something goes wrong while
 	  * reading the imageFile.
 	  **/
-	public ArtFrame(String title, File imageFile) 
+	public ArtFrame(String title, File imageFile)
 		throws IOException
 	{
 		super();
@@ -33,12 +33,12 @@ public class ArtFrame extends JFrame
 	}
 
 	/**
-	  * Replaces the current artwork in the frame with the new one from the 
+	  * Replaces the current artwork in the frame with the new one from the
 	  * given File.
 	  * @param title String for the title of the Art to be displayed.
-	  * @param imageFile File contaning the new image to be displayed in the 
+	  * @param imageFile File contaning the new image to be displayed in the
 	  * frame.
-	  * @throws IOException Throws an IOException if unable to read the image 
+	  * @throws IOException Throws an IOException if unable to read the image
 	  * from the given File.
 	  **/
 	public void repaint(String title, File imageFile) throws IOException
@@ -52,12 +52,12 @@ public class ArtFrame extends JFrame
 		this.add(artwork);
 		this.setSize(
 			new Dimension(
-				this.artwork.getWidth(), 
+				this.artwork.getWidth(),
 				this.artwork.getHeight()
 			)
 		);
 	}
-	
+
 	/**
 	 * JComponent child class for displaying song artwork.
 	 * @author Zachary Ferguson
@@ -69,11 +69,11 @@ public class ArtFrame extends JFrame
 		private Image image;
 
 		/**
-		  * Constructor that creates an Art from with the Image in the given 
+		  * Constructor that creates an Art from with the Image in the given
 		  * File.
-		  * @param imagefile File that contains the image that should be 
+		  * @param imagefile File that contains the image that should be
 		  * displayed when the Art is painted.
-		  * @throws IOException Throws an IOException if unable to read the 
+		  * @throws IOException Throws an IOException if unable to read the
 		  * image from the given File.
 		  **/
 		public Art(File imagefile) throws IOException
@@ -87,8 +87,8 @@ public class ArtFrame extends JFrame
 		  **/
 		public void paintComponent(Graphics g)
 		{
-			if(image == null) 
-				return; 
+			if(image == null)
+				return;
 			g.drawImage(this.image, 0, 0, this);
 			super.setBackground(Color.BLACK);
 		}

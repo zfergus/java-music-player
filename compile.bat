@@ -2,4 +2,4 @@
 
 if not exist ./bin/	mkdir bin
 
-javac -XDignore.symbol.file -d bin ./src/*.java 
+javac -d bin ./src/*.java 

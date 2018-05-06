@@ -5,6 +5,5 @@ then
 	mkdir bin
 fi
 
-javac -XDignore.symbol.file -d bin ./src/*.java
+javac -d bin ./src/*.java
 java -cp ./bin PlayMusic
-

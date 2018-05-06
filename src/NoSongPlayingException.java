@@ -6,11 +6,11 @@
 public class NoSongPlayingException extends Exception{
 	/**
 	  * Creates a String representation of the NoSongPlayingException.
-	  * @return Returns the String error message "NoSongPlayingException: There 
+	  * @return Returns the String error message "NoSongPlayingException: There
 	 * is no song currently playing".
 	  */
 	public String toString()
-	{ 
-		return "NoSongPlayingException: There is no song currently playing."; 
+	{
+		return "NoSongPlayingException: There is no song currently playing.";
 	}
 }

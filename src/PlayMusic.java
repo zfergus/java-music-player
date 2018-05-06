@@ -7,7 +7,7 @@ import java.awt.image.*;
 import javax.imageio.*;
 
 /**
-  * Prompt the user for the song they want to play and plays it, displaying 
+  * Prompt the user for the song they want to play and plays it, displaying
   * artwork too.
   * @author Zachary Ferguson
   * @version 0.2.0
@@ -17,17 +17,17 @@ public class PlayMusic
 	/** Scanner for getting user input from the cmd line. */
 	private static Scanner input = new Scanner(System.in);
 
-	private static final String DEFAULT_SONGLIST_PATH = 
+	private static final String DEFAULT_SONGLIST_PATH =
 		"./songlists/default.sl2";
-	
+
 	/**
-	* Runs the PlayMusic program, prompting for various inputs, playing music, 
+	* Runs the PlayMusic program, prompting for various inputs, playing music,
 	* and displaying artwork.
 	* @param args Command line arguments(not used).
 	*/
 	public static void main(String[] args)
 	{
-		Scanner playlist;                 /* Playlist of songs to play by number.    */ 
+		Scanner playlist;                 /* Playlist of songs to play by number.    */
 		ArrayList<SongDetails> songinfos; /* List of all available songs' song data. */
 		AnimeMusicPlayer kawaii;          /* Music player that plays the songs.      */
 		ArtFrame frame = null;            /* Frame to display the song artwork.      */
@@ -40,9 +40,9 @@ public class PlayMusic
 
 
 		try /* Possible Exceptions from IO */
-		{	
+		{
 			String songlistPath = getSonglistPath();
-			
+
 			File tmp = new File(songlistPath);
 			if(tmp.exists())
 			{
@@ -68,26 +68,26 @@ public class PlayMusic
 				{
 					kawaii.stopMusic();
 				}
-				
+
 				kawaii.playMusic(musdir + song.getMusicFilename() + musExt);
-				
+
 				/************** Display artwork **************/
 				if(painted)
 				{
-					frame.repaint(song.getTitle(), new File(picdir + 
+					frame.repaint(song.getTitle(), new File(picdir +
 					song.getArtFilename() + picExt));
 					frame.setVisible(true);
 				}
 				else
 				{
-					frame = new ArtFrame(song.getTitle(), new File(picdir + 
+					frame = new ArtFrame(song.getTitle(), new File(picdir +
 					song.getArtFilename() + picExt));
 					frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					frame.setResizable(false);
 					frame.setVisible(true);
 					painted = true;
 				}
-				
+
 				/* Pause for next command. */
 				System.out.printf("\n(Type anything to go back to the menu)");
 				input.next();
@@ -96,7 +96,7 @@ public class PlayMusic
 				/* Get next song */
 				song = getSongChoice(playlist, songinfos);
 			}
-			
+
 			/* Stop music before exiting */
 			if(kawaii.isPlaying())
 			{
@@ -113,32 +113,32 @@ public class PlayMusic
 	private static String getSonglistPath()
 	{
 		int choice;
-		
+
 		do
 		{
 			System.out.printf("Songlist location:\n" +
-							  "1) Default [%s]\n" + 
-							  "2) Custom\n" + 
+							  "1) Default [%s]\n" +
+							  "2) Custom\n" +
 							  "# ", DEFAULT_SONGLIST_PATH);
 			choice = input.nextInt();
-			
+
 			if(choice < 1 || choice > 2)
 			{
 				System.out.printf(
 					"Invalid choice, %d. Please retry\n\n", choice);
 			}
 		}while(choice < 1 || choice > 2);
-		
+
 		String path = DEFAULT_SONGLIST_PATH;
 		System.out.println();
-		
+
 		if(choice == 2)
 		{
 			do
 			{
 				System.out.printf("Songlist path: ");
 				path = input.next();
-				
+
 				if(!((new File(path)).exists()))
 				{
 					System.out.printf(
@@ -146,22 +146,22 @@ public class PlayMusic
 					);
 				}
 			}while(!((new File(path)).exists()));
-			
+
 			System.out.println();
 		}
-		
+
 		return path;
 	}
-	
+
 	/**
 	* Constructs a list of SongDetails from the File with the given name.
-	* @param filename Name of the songlist file containing the song titles and 
+	* @param filename Name of the songlist file containing the song titles and
 	* filenames.
 	* @return Returns a new ArrayList of SongDetails acquired from the File.
-	* @throws IOException Throws an exception if something goes wrong while 
+	* @throws IOException Throws an exception if something goes wrong while
 	* reading the songlist file.
 	*/
-	private static ArrayList<SongDetails> buildSonglist(String filename) 
+	private static ArrayList<SongDetails> buildSonglist(String filename)
 		throws IOException
 	{
 		try
@@ -171,10 +171,10 @@ public class PlayMusic
 			String title, songfilename;
 			if(!songin.hasNextLine())
 			{
-				throw new IOException(String.format("Empty file, %s!", 
+				throw new IOException(String.format("Empty file, %s!",
 					filename));
 			}
-			
+
 			while(songin.hasNextLine())
 			{
 				title = songin.nextLine();
@@ -200,13 +200,13 @@ public class PlayMusic
 
 	/**
 	* Constructs a list of SongDetails from the File with the given name.
-	* @param filename Name of the songlist file containing the song titles and 
+	* @param filename Name of the songlist file containing the song titles and
 	*	filenames.
 	* @return Returns a new ArrayList of SongDetails aquired from the File.
-	* @throws IOException Throws an exception if something goes wrong while 
+	* @throws IOException Throws an exception if something goes wrong while
 	*	reading the songlist file.
 	*/
-	private static ArrayList<SongDetails> buildSonglist2(String filename) 
+	private static ArrayList<SongDetails> buildSonglist2(String filename)
 		throws IOException
 	{
 		try
@@ -216,10 +216,10 @@ public class PlayMusic
 			String title, songfilename, artfilename, album;
 			if(!songin.hasNextLine())
 			{
-				throw new IOException(String.format("Empty file, %s!", 
+				throw new IOException(String.format("Empty file, %s!",
 					filename));
 			}
-			
+
 			while(songin.hasNextLine())
 			{
 				title = songin.nextLine();
@@ -228,21 +228,21 @@ public class PlayMusic
 					throw new IOException(String.format(
 						"No music filename for file, %s.", title));
 				}
-				
+
 				songfilename = songin.nextLine();
 				if(!songin.hasNextLine())
 				{
 					throw new IOException(String.format(
 						"No art filename for file, %s.", title));
 				}
-				
+
 				artfilename  = songin.nextLine();
 				if(!songin.hasNextLine())
 				{
 					throw new IOException(String.format(
 						"No album for, %s.", title));
 				}
-				
+
 				album = songin.nextLine();
 				songinfos.add(
 					new SongDetails(title, songfilename, artfilename, album));
@@ -262,7 +262,7 @@ public class PlayMusic
 	/**
 	* Gets a Scanner to get the playlist from.
 	* The playlist is a list of songs to play by number.
-	* @param songCount The number of songs available. 
+	* @param songCount The number of songs available.
 	*		Used to make a playlist of all song and to make a shuffled playlist.
 	* @return Returns a Scanner that scans over the playlist selected.
 	*/
@@ -276,11 +276,11 @@ public class PlayMusic
 				"1) All: Play all songs available\n" +
 				"2) Create one: Create a playlist of songs\n\t(Note: you can " +
 					"save this playlist as a file too)\n" +
-				"3) File: Read a pre-built playlist from a file\n" + 
+				"3) File: Read a pre-built playlist from a file\n" +
 				"4) Shuffle: Play a random number of songs in random order\n" +
 				"5) Custom: Select songs to play from the menu\n" +
 				"# ");
-			
+
 			try
 			{
 				choice = input.nextInt();
@@ -293,7 +293,7 @@ public class PlayMusic
 			}
 			System.out.printf("\n");
 			input.nextLine();
-			
+
 			/* Make playlist */
 			switch(choice)
 			{
@@ -352,7 +352,7 @@ public class PlayMusic
 				+"# ");
 
 			choice = input.nextInt();
-			
+
 			if(choice == 1)
 			{
 				savePlaylist(playlist);
@@ -364,7 +364,7 @@ public class PlayMusic
 			}
 		}
 		while(choice < 0 || choice > 2); /* Until valid choice */
-		
+
 		return new Scanner(playlist);
 	}
 
@@ -380,27 +380,27 @@ public class PlayMusic
 			/* Get filename */
 			System.out.print("Please enter the file name: ");
 			filename = input.next();
-			
+
 			/* Attempt to write out */
 			PrintWriter out = new PrintWriter(new File(filename));
 			out.print(playlist);
 			out.close();
-			
+
 			/* Successfully wrote file */
-			System.out.printf("Playlist successfully written to file %s.\n", 
+			System.out.printf("Playlist successfully written to file %s.\n",
 				filename);
 		}
 		catch(IOException e)
 		{
 			System.out.printf(
-				"Unable to save playlist to file, %s. Try again later.", 
+				"Unable to save playlist to file, %s. Try again later.",
 				filename);
 		}
 	}
 
 	/**
 	* Makes a playlist from the selected file containing a playlist
-	* @return Returns a Scanner that scans over all the songs specified in the 
+	* @return Returns a Scanner that scans over all the songs specified in the
 	*	file.
 	*/
 	private static Scanner getFilePlaylist()
@@ -419,51 +419,51 @@ public class PlayMusic
 		catch(Exception ioe)
 		{
 			System.out.printf(
-				"Unable to open file, %s. Reverting back to custom control.\n", 
+				"Unable to open file, %s. Reverting back to custom control.\n",
 				filename);
-				
+
 			/* Return system.in scanner if file failed to open. */
 			return input;
-		} 
+		}
 	}
 
 	/**
-	* Makes a playlist containing a random number, r, of songs in random order. 
+	* Makes a playlist containing a random number, r, of songs in random order.
 	* Where r is greater than 5 and less than 100.
 	* @param songCount The total number of songs available including "0", exit.
-	* @return Returns a Scanner that scans over at least 5 songs in random 
+	* @return Returns a Scanner that scans over at least 5 songs in random
 	*	order.
 	*/
 	private static Scanner makeShufflePlaylist(int songCount)
 	{
 		StringBuilder all = new StringBuilder();
-		
+
 		/* Get the number of songs to play */
 		int play_count = (int)(Math.random() * 95 + 5);
-		
+
 		/* Print the number of songs to be played. */
 		System.out.printf("Playing %d shuffled songs.\n\n", play_count);
 
 		/* Builds string playlist of random ints, i. Where 0 < i < songCount */
 		for(int i = 1; i < play_count; i++)
 		{
-			all.append(String.format("%d ", 
+			all.append(String.format("%d ",
 				(int)(Math.random()*(songCount-1)+1)));
 		}
 		all.append("0");
 
-		return new Scanner(all.toString()); 
+		return new Scanner(all.toString());
 	}
 
 	/**
 	* Gets the users choice of song form the Scanner in input.
 	* @param playlist Scanner to get the input for the song to be chosen.
-	* @param songinfos ArrayList of Song Details to be used for displaying the 
-	*	song options by title and for getting the filename of the choice to 
-	*	return. 
+	* @param songinfos ArrayList of Song Details to be used for displaying the
+	*	song options by title and for getting the filename of the choice to
+	*	return.
 	* @return String of file name with out .extension.
 	*/
-	private static SongDetails getSongChoice(Scanner playlist, 
+	private static SongDetails getSongChoice(Scanner playlist,
 		ArrayList<SongDetails> songinfos)
 	{
 		int choice;
@@ -476,7 +476,7 @@ public class PlayMusic
 				System.out.printf("%2d) %s\n", i, songinfos.get(i).getTitle());
 			}
 			System.out.printf("%2d) %s\n# ", 0, songinfos.get(0).getTitle());
-			
+
 			/* Get choice from Scanner playlist for the song to play. */
 			try /* Possible IOException */
 			{
@@ -492,37 +492,37 @@ public class PlayMusic
 			{
 				choice = 0; /* Use default choice, 0, to exit. */
 			}
-			
+
 			if(choice > 0 && choice < songinfos.size())
 			{
-				System.out.printf("\nPlaying %s.\n", 
+				System.out.printf("\nPlaying %s.\n",
 					songinfos.get(choice).getTitle());
 				return songinfos.get(choice);
 			}
 			else if(choice == 0)
 			{
-				System.out.printf("\n\n%s.\n", 
+				System.out.printf("\n\n%s.\n",
 					songinfos.get(choice).getTitle());
 				return songinfos.get(choice);
 			}
 			else
 			{
-				System.out.printf("Invalid choice, %d, please try again.\n\n", 
+				System.out.printf("Invalid choice, %d, please try again.\n\n",
 					choice);
 			}
 		}
 	}
 
 	/**
-	* Creates a songlist file with the, with the given name, containing the 
-	* contents of the given ArrayList of SongDetails 
+	* Creates a songlist file with the, with the given name, containing the
+	* contents of the given ArrayList of SongDetails
 	* @param filename A String for the name of the file to save the songlist to.
-	* @param songlist An ArrayList of SongDetails that will be printed out to 
+	* @param songlist An ArrayList of SongDetails that will be printed out to
 	*	the created file.
-	* @throws IOException Throws an IOException if the file is unable to open 
+	* @throws IOException Throws an IOException if the file is unable to open
 	*	for writing.
 	*/
-	private static void saveSonglist(String filename, ArrayList<SongDetails> 
+	private static void saveSonglist(String filename, ArrayList<SongDetails>
 		songlist) throws IOException
 	{
 		try
@@ -537,30 +537,32 @@ public class PlayMusic
 
 				i++;
 			}
-			
+
 			songsout.close();
 		}
 		catch(IOException io)
 		{
-			System.out.printf("Unable to open file for writing, %s.\n%s\n", 
+			System.out.printf("Unable to open file for writing, %s.\n%s\n",
 				filename, io.toString());
 			throw io;
 		}
 	}
 
 	/**
-	* Sorts the given ArrayList of SongDetails in the order specified by the 
-	* SongDetails' compareTo(). New list will be return, and the original list 
+	* Sorts the given ArrayList of SongDetails in the order specified by the
+	* SongDetails' compareTo(). New list will be return, and the original list
 	* will remain unchanged. Uses a QuickSort algorithm to sort the list.
-	* @param songlist The ArrayList of SongDetails to be sorted. Will remain 
+	* @param songlist The ArrayList of SongDetails to be sorted. Will remain
 	*	unchanged.
-	* @return Returns a copy of the given ArrayList that is sorted and 
+	* @return Returns a copy of the given ArrayList that is sorted and
 	*	independent of the original.
 	*/
 	@SuppressWarnings("unchecked")
-	private static ArrayList<SongDetails> sortSonglist(ArrayList<SongDetails> 
+	private static ArrayList<SongDetails> sortSonglist(ArrayList<SongDetails>
 		songlist)
 	{
-		return QuickSort.sort(songlist);
-	} 
+		ArrayList<SongDetails> copy = new ArrayList<SongDetails>(songlist);
+		Collections.sort(copy);
+		return copy;
+	}
 }

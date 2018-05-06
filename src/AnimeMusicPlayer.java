@@ -1,9 +1,5 @@
-import sun.audio.*; /* Needs to be replaced to negate warning messages. */
-//import javax.sound.sampled.*;
-//import javafx.scene.media.Media;
-//import javafx.scene.media.MediaPlayer;
-
 import java.io.*;
+import javax.sound.sampled.*;
 
 /**
   * Music Player for playing anime music.
@@ -11,24 +7,25 @@ import java.io.*;
   * @version 0.2.0
   */
 public class AnimeMusicPlayer extends MusicPlayer
-{  
+{
 	/** Boolean for if the Player is currently playing. */
 	private boolean playing;
 
-	/** AudioStream of the music that is played. */
-	private AudioStream aStream; // The music stream
+	/** AudioInputStream of the music that is played. */
+	private AudioInputStream audioStream; // The music stream
 
-// private MediaPlayer song;
+	/** Clip of the music that is played. */
+	private Clip song; // The music stream
 
 	/**
-	  * Default constructor for AnimeMusicPlayer. 
+	  * Default constructor for AnimeMusicPlayer.
 	  * Sets the input as System.in, and the playing state to false.
 	  */
 	public AnimeMusicPlayer()
 	{
 		this.playing = false;
 	}
-		
+
 	/**
 	  * Plays the music contained in the file with the given name.
 	  * @param filename String for the name of the file containing the music.
@@ -41,40 +38,35 @@ public class AnimeMusicPlayer extends MusicPlayer
 			{
 				this.stopMusic();
 			}
-			
-			FileInputStream musicStream = new FileInputStream(filename);
-			this.aStream = new AudioStream(musicStream);
-			AudioPlayer.player.start(aStream);
-			//File musicFile = new File(filename);
-			//Clip clip = AudioSystem.getClip();
-			//AudioInputStream ais = AudioSystem.getAudioInputStream(musicFile);
-			//clip.open(ais);
-			//Media song_media = new Media(filename);
-			//this.song = new MediaPlayer(song_media);
-			//this.song.play();
+
+			this.audioStream = AudioSystem.getAudioInputStream(
+				new File(filename).getAbsoluteFile());
+		    this.song = AudioSystem.getClip();
+		    this.song.open(this.audioStream);
+		    this.song.start();
+
 			this.playing = true;
 		}
 		catch(IOException ioe)
 		{
-		  System.out.printf("No file, %s, found. Please try again.\n" + ioe, 
+		  System.out.printf("No file, %s, found. Please try again.\n" + ioe,
 			filename);
 		}
 		catch(NoSongPlayingException nsp)
 		{
 			this.playing = false;
 		}
-		//catch(LineUnavailableException lue)
-		//{
-		//	System.out.printf("Unable to read file, %s, please try again.\n" + 
-		//		lue, filename);
-		//}
-		//	catch(UnsupportedAudioFileException uafe)
-		//{
-		//	System.out.printf("Unsupported file format, %s, please try a " + 
-		//		"different format.\n" + uafe, filename);
-		//}
+		catch(UnsupportedAudioFileException e)
+		{
+			System.out.printf("Unsupported audio format: %s." +
+				" Please try again.\n" + e, filename);
+		}
+		catch(Exception e){
+			System.out.print("Something went wrong!" +
+				" Please try again.\n" + e);
+		}
 	}
-	
+
 	/**
 	  * Stops the music currently playing.
 	  * @throws NoSongPlayingException Throws exception if no song is currently
@@ -83,19 +75,20 @@ public class AnimeMusicPlayer extends MusicPlayer
 	public void stopMusic() throws NoSongPlayingException
 	{
 		if(!this.isPlaying()) throw new NoSongPlayingException();
-		//this.song.stop();
-		AudioPlayer.player.stop(aStream);
+		this.song.stop();
+		this.song.close();
+		this.playing = false;
 	}
-	
+
 	/**
 	  * Determines if music is playing or not.
-	  * @return Returns a boolean for if the music is playing. 
+	  * @return Returns a boolean for if the music is playing.
 	  */
 	public boolean isPlaying()
 	{
 		return playing;
 	}
-	
+
 	/**
 	  * Creates a String representaton of the player.
 	  * @return Returns a String representaton of the player.
