@@ -26,7 +26,7 @@ mus/*
 songlists/*
 playlists/*
 
-./bin/
+bin/
 
 *.exe
 !run.exe
@@ -35,3 +35,5 @@ playlists/*
 *.zip
 
 !*/sample*
+
+screenshots/
