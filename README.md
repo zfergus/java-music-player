@@ -1,6 +1,6 @@
 # Anime Music Player
 
-<img src = "screenshot.png" title = "Anime Music Players" width = "100%">
+<p align="center"><img src = "screenshot.png" title = "Anime Music Players" width = "75%"></p>
 
 **Java command line music player for playing your favorite anime theme songs.**
 
