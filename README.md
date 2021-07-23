@@ -1,16 +1,15 @@
-# Anime Music Player
+# Java Music Player
 
-<p align="center"><img src = "screenshot.png" title = "Anime Music Players" width = "75%"></p>
+<p align="center"><img src = "screenshot.png" title = "Java Music Players" width = "75%"></p>
 
-**Java command line music player for playing your favorite anime theme songs.**
+**Java command line music player for playing your favorite songs.**
 
-Anime Music Player is a Java program that plays anime themes or related
-songs selected by the user or different playlist sources (files, strings,
-shuffled, all songs) and displays the corresponding song artwork. Moreover,
-users can add more songs and artwork by putting them in the corresponding
-folders with the standard file name extensions specified, and then adding
-them to their "songlist" of choice. This allows for a simple and easy to use
-command line music player.
+Java Music Player is a Java program that plays music selected by the user 
+or different playlist sources (files, strings, shuffled, all songs) and 
+displays the corresponding song artwork. Moreover, users can add more songs 
+and artwork by putting them in the corresponding folders with the standard 
+file name extensions specified, and then adding them to their "songlist" 
+of choice. This allows for a simple and easy to use command line music player.
 
 <hr>
 
@@ -30,7 +29,7 @@ program:
 REM compiles the code
 javac -XDignore.symbol.file -d bin ./src/*.java
 
-REM runs Anime Music Player
+REM runs Music Player
 java -cp ./bin PlayMusic
 ```
 #### Unix
@@ -41,7 +40,7 @@ program:
 # compiles the code
 javac -XDignore.symbol.file -d bin ./src/*.java
 
-# runs Anime Music Player
+# runs Music Player
 java -cp ./bin PlayMusic
 ```
 
@@ -121,7 +120,7 @@ the terminal cmd.)
 * `MusicPlayer.java` - Public Interface for music players, alls music players
 implement this interface.
 
-* `AnimeMusicPlayer.java` - The Anime Music Player's MusicPlayer that starts,
+* `AnimeMusicPlayer.java` - The Java Music Player's MusicPlayer that starts,
 stops, and keeps track of if a song has been played.
 
 * `ArtFrame.java` - JFrame extension that is designed to show Art, song
@@ -141,7 +140,7 @@ name.
 * `./javadocs/document.bat` - Batch script to document the java source code in
 `./src` and store them in `./javadocs/`
 
-* `run.bat` - Batch script that compiles and runs the AnimeMusicPlayer program
+* `run.bat` - Batch script that compiles and runs the JavaMusicPlayer program
 
 * `run.exe` - .exe version of run.bat
 
